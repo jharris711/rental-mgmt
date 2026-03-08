@@ -7,7 +7,7 @@ import {
 
 
 const CREATE_USER_ENDPOINT = '/register'
-const LOGIN_USER_ENDPOINT = '/login'
+const LOGIN_USER_ENDPOINT  = '/login'
 
 const createUserValidation = t.Object({
     username: t.String({ minLength: 3 }),
