@@ -1,4 +1,7 @@
 import { createUser } from "./create-user";
 import { loginUser } from "./login-user";
 
-export { createUser, loginUser }
+export {
+    createUser as createUserController,
+    loginUser as loginUserController
+}

@@ -1,19 +1,29 @@
 import { Elysia, t } from 'elysia'
 
-import { createUser, loginUser } from '../controllers/users'
+import {
+    createUserController,
+    loginUserController
+} from '../controllers/users'
 
+
+const CREATE_USER_ENDPOINT = '/register'
+const LOGIN_USER_ENDPOINT = '/login'
+
+const createUserValidation = t.Object({
+    username: t.String({ minLength: 3 }),
+    email:    t.String({ format: 'email' }),
+    password: t.String({ minLength: 8 }),
+})
+
+const loginUserValidation = t.Object({
+    username: t.String(),
+    password: t.String(),
+})
 
 export const userRouter = new Elysia()
-    .post('/register', createUser, {
-        body: t.Object({
-            username: t.String({ minLength: 3 }),
-            email: t.String({ format: 'email' }),
-            password: t.String({ minLength: 8 }),
-        })
+    .post(CREATE_USER_ENDPOINT, createUserController, {
+        body: createUserValidation
     })
-    .post('/login', loginUser, {
-        body: t.Object({
-            username: t.String(),
-            password: t.String(),
-        })
+    .post(LOGIN_USER_ENDPOINT, loginUserController, {
+        body: loginUserValidation
     })
