@@ -1,12 +1,12 @@
 import { Elysia } from "elysia";
-import { authController } from "./controllers/auth";
+import { userRouter } from "./routes/user-routes";
 
 
 const app = new Elysia();
 
 app.get("/", () => "Hello Elysia");
 
-app.use(authController);
+app.use(userRouter);
 
 app.listen(3000);
 
