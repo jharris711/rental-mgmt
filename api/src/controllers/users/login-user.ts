@@ -7,7 +7,7 @@ import { eq } from 'drizzle-orm'
 
 const User = t.Object({
     username: t.String({ minLength: 3 }),
-    email: t.String({ format: 'email' }),
+    email:    t.String({ format: 'email' }),
     password: t.String({ minLength: 8 }),
 })
 

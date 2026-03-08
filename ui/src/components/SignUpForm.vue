@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+    import { ref, watch } from 'vue';
 
     const props = defineProps<{
         username?:      string;
@@ -40,14 +40,14 @@ import { ref, watch } from 'vue';
         e.preventDefault();
         props.onSubmit({
             username: usernameRef.value,
-            email: emailRef.value,
+            email:    emailRef.value,
             password: passwordRef.value
         });
         
         // Clear form after submitting if specified (useful for create form)
         if (props.clearOnSubmit) {
-            usernameRef.value       = '';
-            emailRef.value = '';
+            usernameRef.value = '';
+            emailRef.value    = '';
             passwordRef.value = '';
         }
     }
