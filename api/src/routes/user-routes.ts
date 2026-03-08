@@ -3,7 +3,7 @@ import { Elysia, t } from 'elysia'
 import { createUser, loginUser } from '../controllers/users'
 
 
-export const userRouter = new Elysia({ prefix: '/auth' })
+export const userRouter = new Elysia()
     .post('/register', createUser, {
         body: t.Object({
             username: t.String({ minLength: 3 }),
