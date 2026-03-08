@@ -49,6 +49,8 @@ export const createUser = async ({ body, set }: Context) => {
                 createdAt: user.createdAt,
             })
 
+        console.log(newUser)
+
         set.status = 201
         return newUser
     } catch (error) {
