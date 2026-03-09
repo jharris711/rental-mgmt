@@ -6,20 +6,19 @@ import { eq } from 'drizzle-orm'
 
 
 const User = t.Object({
-    username: t.String({ minLength: 3 }),
     email:    t.String({ format: 'email' }),
     password: t.String({ minLength: 8 }),
 })
 
 export const loginUser = async ({ body, set }: Context) => {
-    const { username, password } = body as typeof User;
+    const { email, password } = body as typeof User;
 
     try {
         // Find user
         const [existingUser] = await dbClient
             .select()
             .from(user)
-            .where(eq(user.username, username))
+            .where(eq(user.email, email))
             .limit(1)
 
         if (!existingUser) {
@@ -34,6 +33,8 @@ export const loginUser = async ({ body, set }: Context) => {
             set.status = 401
             return { error: 'Invalid credentials' }
         }
+
+        console.log('*****existingUser:', existingUser)
 
         // Return user data (excluding password and salt)
         return {

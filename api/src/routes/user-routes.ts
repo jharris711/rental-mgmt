@@ -16,7 +16,7 @@ const createUserValidation = t.Object({
 })
 
 const loginUserValidation = t.Object({
-    username: t.String(),
+    email: t.String(),
     password: t.String(),
 })
 
